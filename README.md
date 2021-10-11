@@ -1,15 +1,13 @@
-# 👷 `worker-template` Hello World
+# 🌌 McInfo API
+A project for the CloudFlare Developer Summer Challenge
+**Check branches for Pages and Worker code**
 
-A template for kick starting a Cloudflare worker project.
+## Endpoints
+- Pages - https://mcinfo.james090500.com
+- Worker - https://mcinfo-api.james090500.com
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
-
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
+## API
+This is the API for [McInfo](https://mcinfo.james090500.com)
 ```
-wrangler generate projectname https://github.com/cloudflare/worker-template
+https://mcinfo-api.james090500.com/v1/user/(username or uuid)
 ```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
