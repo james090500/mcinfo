@@ -7,7 +7,11 @@ const router = Router()
 // Get the user
 router.get('/v1/user/:user', async request => {
     let userData = await User.getUserData(request.params.user)
-    return new Response(userData);
+    const headers = {
+        'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
+        'Content-type': 'application/json'
+      }
+    return new Response(userData, { headers });
 })
 
 // All other routers

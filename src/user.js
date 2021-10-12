@@ -32,7 +32,6 @@ export default {
         return data;
     },
     async getUserUsernameHistory(uuid) {
-        //TODO make post
         let response = await fetch(`https://api.mojang.com/user/profiles/${uuid}/names`)
         let data = await response.json();
         return data;
