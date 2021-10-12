@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="panel bg-dark mb-10">
+        <div class="panel bg-dark table-responsive mb-10">
             <div class="panel-title">Profile</div>
             <table class="table border-top">
                 <tr>
@@ -13,7 +13,7 @@
                 </tr>
             </table>
         </div>
-        <div class="panel bg-dark mb-10">
+        <div class="panel bg-dark table-responsive mb-10">
             <div class="panel-title">History</div>
             <table class="table border-top">
                 <tr v-for="(user, index) in this.profile.history" :key="index">

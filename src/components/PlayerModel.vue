@@ -1,7 +1,7 @@
 <template>
     <div id="skin_container" class="bg-very-dark" v-if="!errors">
         <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra"><fa :icon="buttonClass"/> Elytra</button>
-        <canvas id="skin_canvas"></canvas>
+        <canvas id="skin_canvas" class="w-full"></canvas>
     </div>
     <div class="alert alert-danger mr-10" v-else>
         Your browser doesn't support WebGL. You will experience issues!
