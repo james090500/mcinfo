@@ -41,8 +41,8 @@
         data() {
             return {
                 loading: false,
-                // profile: null
-                profile: {"uuid":"ba4161c03a42496c8ae07d13372f3371","username":"james090500","history":[{"name":"james090500"},{"name":"TheSexySlime","changedToAt":1423064662000},{"name":"james090500","changedToAt":1425728631000}],"textures":{"SKIN":{"url":"http://textures.minecraft.net/texture/70161d051a06a42987f29f8aeffee510a40c11bd8033b726d6812abe98a3604a"},"CAPE":{"url":"http://textures.minecraft.net/texture/2340c0e03dd24a11b15a8b33c2a7e9e32abb2051b2481d0ba7defd635ca7a933"}}}
+                profile: null
+                // profile: {"uuid":"ba4161c03a42496c8ae07d13372f3371","username":"james090500","history":[{"name":"james090500"},{"name":"TheSexySlime","changedToAt":1423064662000},{"name":"james090500","changedToAt":1425728631000}],"textures":{"SKIN":{"url":"http://textures.minecraft.net/texture/70161d051a06a42987f29f8aeffee510a40c11bd8033b726d6812abe98a3604a"},"CAPE":{"url":"http://textures.minecraft.net/texture/2340c0e03dd24a11b15a8b33c2a7e9e32abb2051b2481d0ba7defd635ca7a933"}}}
             }
         },
         methods: {
