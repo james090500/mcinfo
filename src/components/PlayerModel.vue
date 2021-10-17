@@ -56,8 +56,8 @@
                     canvas: document.getElementById("skin_canvas"),
                     width: 300,
                     height: 400,
-                    skin: this.profile.textures.SKIN.url,
-                    cape: this.profile.textures.CAPE.url
+                    skin: `https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/skin`,
+                    cape: `https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/cape`
                 });
 
                 // Control objects with your mouse!
