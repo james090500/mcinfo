@@ -3,7 +3,7 @@
         <div class="col-12 col-lg-6 p-10">
             <SearchBox @search="onSearch"/>
             <transition name="fade" mode="out-in">
-                <div v-if="profile != null">
+                <div v-if="profile != null && !loading">
                     <h1 class="border-bottom m-0 pb-10">{{profile.username}}</h1>
                     <div class="row mt-10">
                         <div class="col-12 col-lg-4 mb-10">
@@ -49,7 +49,7 @@
                 this.getPlayer(value);
             },
             getPlayer(value) {
-                //TODO get test environment
+                this.profile = null;
                 this.loading = true;
                 this.axios.get(`https://mcinfo-api.james090500.workers.dev/v1/user/${value}`).then((response) => {
                     this.profile = response.data;
