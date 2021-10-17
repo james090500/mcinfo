@@ -3,15 +3,29 @@ import User from './user'
 
 // Load the router
 const router = Router()
+const jsonHeader = {
+    'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
+    'Content-type': 'image/png'
+}
+const imageHeader = {
+    'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
+    'Content-type': 'image/png'
+}
 
 // Get the user
 router.get('/v1/user/:user', async request => {
     let userData = await User.getUserData(request.params.user)
-    const headers = {
-        'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
-        'Content-type': 'application/json'
-      }
-    return new Response(userData, { headers });
+    return new Response(userData, { headers: jsonHeader });
+})
+
+router.get('/v1/user/:user/skin', async request => {
+    let userData = await User.getSkin(request.params.user)
+    return new Response(userData, { headers: jsonHeader });
+})
+
+router.get('/v1/user/:user/cape', async request => {
+    let userData = await User.getCape(request.params.user)
+    return new Response(userData, { headers: imageHeader });
 })
 
 // All other routers
