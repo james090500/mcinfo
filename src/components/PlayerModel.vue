@@ -56,9 +56,8 @@
                     canvas: document.getElementById("skin_canvas"),
                     width: 300,
                     height: 400,
-                    //TODO fix coors
-                    // skin: this.profile.textures.SKIN.url
-                    skin: `https://minecraftapi.net/api/v1/profile/${this.profile.uuid}/skin`,
+                    skin: this.profile.textures.SKIN.url,
+                    cape: this.profile.textures.CAPE.url
                 });
 
                 // Control objects with your mouse!
