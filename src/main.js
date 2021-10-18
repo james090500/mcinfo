@@ -1,8 +1,13 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+//Pages
+import HomePage from './pages/HomePage.vue'
+import UserPage from './pages/UserPage.vue'
+import McInfo from './McInfo.vue'
 
 // Create Vue App
-const app = createApp(App)
+const app = createApp(McInfo)
 app.config.productionTip = false
 
 // Include CSS file
@@ -14,10 +19,10 @@ window.halfmoon = halfmoon;
 
 // FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faCopyright, faSearch, faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faCopyright, faHome, faSearch, faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faCopyright, faCog, faSearch, faToggleOn, faToggleOff, faGithub);
+library.add(faCopyright, faCog, faSearch, faToggleOn, faToggleOff, faHome,faGithub);
 app.component('fa', FontAwesomeIcon)
 
 // Filters
@@ -34,6 +39,16 @@ app.config.globalProperties.$filters = {
 // Axios
 import axios from 'axios'
 app.config.globalProperties.axios = axios;
+
+// Router
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        { path: '/', component: HomePage },
+        { path: '/:user?', component: UserPage }
+    ]
+})
+app.use(router);
 
 // Mount Vue app
 app.mount('#app')

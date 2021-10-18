@@ -1,6 +1,6 @@
 <template>
     <div id="skin_container" class="bg-very-dark" v-if="!errors">
-        <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra"><fa :icon="buttonClass"/> Elytra</button>
+        <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra" v-if="profile.textures.CAPE"><fa :icon="buttonClass"/> Elytra</button>
         <canvas id="skin_canvas" class="w-full"></canvas>
     </div>
     <div class="alert alert-danger mr-10" v-else>
@@ -70,10 +70,10 @@
                 if(this.skinViewer.capeImage != null)
                     if(this.skinViewer.playerObject.backEquipment == "cape") {
                         this.buttonClass = "toggle-on"
-                        this.loadCape(this.skinViewer.capeImage.currentSrc, { backEquipment: "elytra" })
+                        this.skinViewer.loadCape(this.skinViewer.capeImage.currentSrc, { backEquipment: "elytra" })
                     } else {
                         this.buttonClass = "toggle-off"
-                        this.loadCape(this.skinViewer.capeImage.currentSrc)
+                        this.skinViewer.loadCape(this.skinViewer.capeImage.currentSrc)
                     }
             }
         },

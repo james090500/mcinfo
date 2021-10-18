@@ -4,7 +4,7 @@ A project for the CloudFlare Developer Summer Challenge
 
 ## Endpoints
 - Pages - https://mcinfo.james090500.com
-- Worker - https://mcinfo-api.james090500.com
+- Worker - https://mcinfo-api.james090500.workers.dev
 
 ## Pages
 This is the Pages for [McInfo](https://mcinfo.james090500.com)
