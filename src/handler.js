@@ -4,11 +4,11 @@ import User from './user'
 // Load the router
 const router = Router()
 const jsonHeader = {
-    'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
-    'Content-type': 'image/png'
+    'Access-Control-Allow-Origin': '*',
+    'Content-type': 'applications/json'
 }
 const imageHeader = {
-    'Access-Control-Allow-Origin': 'https://mcinfo.james090500.com',
+    'Access-Control-Allow-Origin': '*',
     'Content-type': 'image/png'
 }
 
@@ -20,7 +20,7 @@ router.get('/v1/user/:user', async request => {
 
 router.get('/v1/user/:user/skin', async request => {
     let userData = await User.getSkin(request.params.user)
-    return new Response(userData, { headers: jsonHeader });
+    return new Response(userData, { headers: imageHeader });
 })
 
 router.get('/v1/user/:user/cape', async request => {
@@ -29,7 +29,7 @@ router.get('/v1/user/:user/cape', async request => {
 })
 
 // All other routers
-router.all('/*', () => new Response('Not Found', { status: 404 }))
+router.all('/*', () => new Response('Not Found', { status: 404, headers: jsonHeader }))
 
 // Return the router
 export const handleRequest = request => router.handle(request)
