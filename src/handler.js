@@ -5,7 +5,7 @@ import User from './user'
 const router = Router()
 const jsonHeader = {
     'Access-Control-Allow-Origin': '*',
-    'Content-type': 'applications/json'
+    'Content-type': 'application/json'
 }
 const imageHeader = {
     'Access-Control-Allow-Origin': '*',
@@ -15,16 +15,19 @@ const imageHeader = {
 // Get the user
 router.get('/v1/user/:user', async request => {
     let userData = await User.getUserData(request.params.user)
+    if(userData === null) return new Response('Not Found', { status: 404, headers: jsonHeader })
     return new Response(userData, { headers: jsonHeader });
 })
 
 router.get('/v1/user/:user/skin', async request => {
     let userData = await User.getSkin(request.params.user)
+    if(userData === null) return new Response('Not Found', { status: 404, headers: jsonHeader })
     return new Response(userData, { headers: imageHeader });
 })
 
 router.get('/v1/user/:user/cape', async request => {
     let userData = await User.getCape(request.params.user)
+    if(userData === null) return new Response('Not Found', { status: 404, headers: jsonHeader })
     return new Response(userData, { headers: imageHeader });
 })
 

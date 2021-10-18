@@ -43,13 +43,21 @@ export default {
     },
     async getSkin(value) {
         let profile = await this.getUserData(value);
+        if(profile === null) return null;
+
+        if(JSON.parse(profile).textures.SKIN == null) return null;
         let skin = await fetch(JSON.parse(profile).textures.SKIN.url)
+
         let skinBlob = await skin.blob();
         return skinBlob;
     },
     async getCape(value) {
         let profile = await this.getUserData(value);
+        if(profile === null) return null;
+
+        if(JSON.parse(profile).textures.CAPE == null) return null;
         let cape = await fetch(JSON.parse(profile).textures.CAPE.url)
+
         let capeBlob = await cape.blob();
         return capeBlob;
     },
