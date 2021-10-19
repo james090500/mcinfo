@@ -25,8 +25,8 @@ router.get('/v1/user/:user/skin', async request => {
     return new Response(userData, { headers: imageHeader });
 })
 
-router.get('/v1/user/:user/cape', async request => {
-    let userData = await User.getCape(request.params.user)
+router.get('/v1/user/:user/cape/:type?', async request => {
+    let userData = await User.getCape(request.params.user, request.params.type)
     if(userData === null) return new Response('Not Found', { status: 404, headers: jsonHeader })
     return new Response(userData, { headers: imageHeader });
 })
