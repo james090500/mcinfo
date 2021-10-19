@@ -15,6 +15,7 @@
     "@james090500/skinview3d": "^2.0.4",
     "axios": "^0.23.0",
     "core-js": "^3.6.5",
+    "date-fns": "^2.25.0",
     "halfmoon": "^1.1.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.12"

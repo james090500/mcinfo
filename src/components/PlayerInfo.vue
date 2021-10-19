@@ -16,11 +16,10 @@
         <div class="panel bg-dark table-responsive mb-10">
             <div class="panel-title">History</div>
             <table class="table border-top">
-                <tr v-for="(user, index) in this.profile.history" :key="index">
-                    <th>{{this.profile.history.length - index}}</th>
+                <tr v-for="(user, index) in this.usernameHistory" :key="index">
+                    <th>{{this.usernameHistory.length - index}}</th>
                     <td>{{user.name}}</td>
-                    <td v-if="user.changedToAt">{{$filters.formatDate(user.changedToAt)}}</td>
-                    <td v-else>Current Username</td>
+                    <td v-if="user.changedToAt">changed {{usernameChangedAt(user.changedToAt)}}</td>
                 </tr>
             </table>
         </div>
@@ -37,7 +36,19 @@
 </style>
 
 <script>
+    import { formatDistance } from 'date-fns'
+
     export default {
+        methods: {
+            usernameChangedAt(value) {
+                return formatDistance(new Date(value), new Date(), { addSuffix: true })
+            }
+        },
+        computed: {
+            usernameHistory() {
+                return this.profile.history.slice().reverse();
+            },
+        },
         props: {
             profile: Object
         }

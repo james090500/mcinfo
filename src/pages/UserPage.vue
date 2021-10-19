@@ -14,6 +14,9 @@
         <div class="text-center" v-else-if="loading">
             <h1><fa icon="cog" spin/> Loading...</h1>
         </div>
+        <div class="text-center" v-else>
+            <h3>That user doesn't exist</h3>
+        </div>
     </transition>
 </template>
 
@@ -28,6 +31,15 @@
                 profile: null
             }
         },
+        watch: {
+            '$route.params.user': function() {
+                let paramValue = this.$route.params.user;
+                if(paramValue != null && this.profile == null || (this.profile.uuid != paramValue && this.profile.name != paramValue)) {
+                    console.log("RUNNING")
+                    this.getPlayer(this.$route.params.user)
+                }
+            }
+        },
         created() {
             this.getPlayer(this.$route.params.user)
         },
@@ -38,7 +50,8 @@
                 this.axios.get(`https://mcinfo-api.james090500.workers.dev/v1/user/${value}`).then((response) => {
                     this.profile = response.data;
                     this.$router.push(`/${this.profile.uuid}`)
-                }).finally(() => {
+                }).catch(() => {})
+                .finally(() => {
                     this.loading = false;
                 });
             }

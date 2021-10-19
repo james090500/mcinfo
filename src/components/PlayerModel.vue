@@ -1,10 +1,19 @@
 <template>
-    <div id="skin_container" class="bg-very-dark" v-if="!errors">
-        <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra" v-if="profile.textures.CAPE"><fa :icon="buttonClass"/> Elytra</button>
-        <canvas id="skin_canvas" class="w-full"></canvas>
-    </div>
-    <div class="alert alert-danger mr-10" v-else>
-        Your browser doesn't support WebGL. You will experience issues!
+    <div>
+        <div id="skin_container" class="bg-very-dark" v-if="!errors">
+            <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra" v-if="profile.textures.CAPE"><fa :icon="buttonClass"/> Elytra</button>
+            <canvas id="skin_canvas" class="w-full"></canvas>
+        </div>
+        <div class="alert alert-danger mr-10" v-else>
+            Your browser doesn't support WebGL. You will experience issues!
+        </div>
+        <select class="form-control my-10" v-model="capeType">
+            <option value="official">Official</option>
+            <option value="minecraftcapes">MinecraftCapes</option>
+            <option value="labymod">LabyMod</option>
+            <option value="optifine">OptiFine</option>
+            <option value="mantle">Mantle</option>
+        </select>
     </div>
 </template>
 
@@ -37,7 +46,15 @@
                 elementId: null,
                 skinViewer: null,
                 buttonClass: 'toggle-off',
+                capeType: "official",
                 errors: false,
+            }
+        },
+        watch: {
+            'capeType': function() {
+                this.skinViewer.loadCape(null)
+                this.skinViewer.loadCape(`https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/cape/${this.capeType}`)
+                this.buttonClass = "toggle-off"
             }
         },
         mounted() {
@@ -57,7 +74,7 @@
                     width: 300,
                     height: 400,
                     skin: `https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/skin`,
-                    cape: `https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/cape`
+                    cape: `https://mcinfo-api.james090500.workers.dev/v1/user/${this.profile.uuid}/cape/${this.capeType}`
                 });
 
                 // Control objects with your mouse!

@@ -2,9 +2,11 @@
     <section class="row justify-content-center my-20">
         <div class="col-12 col-lg-6 p-10">
             <SearchBox @search="onSearch"/>
-            <transition name="fade" mode="out-in">
-                <router-view></router-view>
-            </transition>
+            <router-view v-slot="{ Component }">
+                <transition ame="fade" mode="out-in">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
         </div>
     </section>
 </template>
