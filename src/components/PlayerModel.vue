@@ -1,19 +1,22 @@
 <template>
     <div>
         <div id="skin_container" class="bg-very-dark" v-if="!errors">
-            <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra" v-if="profile.textures.CAPE"><fa :icon="buttonClass"/> Elytra</button>
+            <button id="toggleElytra" class="btn btn-link" v-on:click="toggleElytra"><fa :icon="buttonClass"/> Elytra</button>
             <canvas id="skin_canvas" class="w-full"></canvas>
         </div>
         <div class="alert alert-danger mr-10" v-else>
             Your browser doesn't support WebGL. You will experience issues!
         </div>
-        <select class="form-control my-10" v-model="capeType">
-            <option value="official">Official</option>
-            <option value="minecraftcapes">MinecraftCapes</option>
-            <option value="labymod">LabyMod</option>
-            <option value="optifine">OptiFine</option>
-            <option value="mantle">Mantle</option>
-        </select>
+        <div class="form-group my-10">
+            <label for="cape-service">Cape Service</label>
+            <select class="form-control" id="cape-service" v-model="capeType">
+                <option value="official">Official</option>
+                <option value="minecraftcapes">MinecraftCapes</option>
+                <option value="labymod">LabyMod</option>
+                <option value="optifine">OptiFine</option>
+                <option value="mantle">Mantle</option>
+            </select>
+        </div>
     </div>
 </template>
 
